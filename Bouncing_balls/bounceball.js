@@ -104,7 +104,7 @@ EvilCircle.prototype.checkBounds = function(){
     	this.y += this.size;
     }
 };
-EvilCircle.prototype.setControls = function(){				                           //移动EvilCircle
+EvilCircle.prototype.setControls = function(){				                         //移动EvilCircle
     var _this = this;										 //操作函数内指针
     window.onkeydown = function(e){
     	if (e.keyCode === 65) {         //a
