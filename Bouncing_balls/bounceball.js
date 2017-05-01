@@ -105,7 +105,7 @@ EvilCircle.prototype.checkBounds = function(){
     }
 };
 EvilCircle.prototype.setControls = function(){				                               //移动EvilCircle
-    var _this = this;										         //操作函数内指针
+    var _this = this;										       //操作函数内指针
     window.onkeydown = function(e){
     	if (e.keyCode === 65) {         //a
     	    _this.x -= _this.velX;
@@ -140,7 +140,7 @@ var evil_circle = new EvilCircle();
 evil_circle.setControls();
 
 function loop(){
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';						          //0.25cover之前画的球
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';						            //0.25cover之前画的球
     ctx.fillRect(0, 0, width, height);
     while (balls.length < 25) {
     	var ball = new Ball();
