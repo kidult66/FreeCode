@@ -56,7 +56,7 @@ Ball.prototype.update = function(){								//边界检测
     if((this.y - this.size) <= 0){
     	this.velY = -(this.velY);
     }
-    this.x += this.velX;										//更新小球位置
+    this.x += this.velX;									//更新小球位置
     this.y += this.velY;
 };
 Ball.prototype.collisionDetect = function(){
@@ -64,9 +64,9 @@ Ball.prototype.collisionDetect = function(){
     	if(!(this === balls[j])){								//被检测的两个球是否是同一个
     	    var dx = this.x - balls[j].x;
     	    var dy = this.y - balls[j].y;
-    	    var distance = Math.sqrt(dx * dx + dy * dy);		//两球的距离
+    	    var distance = Math.sqrt(dx * dx + dy * dy);		       //两球的距离
 
-    	    if(distance < this.size + balls[j].size){			//距离小于两球半径和
+    	    if(distance < this.size + balls[j].size){			       //距离小于两球半径和
     	        balls[j].color = this.color = 'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) + ')';
             }
     	}
@@ -104,8 +104,8 @@ EvilCircle.prototype.checkBounds = function(){
     	this.y += this.size;
     }
 };
-EvilCircle.prototype.setControls = function(){				//移动EvilCircle
-    var _this = this;										//操作函数内指针
+EvilCircle.prototype.setControls = function(){				          //移动EvilCircle
+    var _this = this;										          //操作函数内指针
     window.onkeydown = function(e){
     	if (e.keyCode === 65) {			//a
     	    _this.x -= _this.velX;
