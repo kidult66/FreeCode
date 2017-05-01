@@ -43,7 +43,7 @@ Ball.prototype.draw = function(){
     ctx.arc(this.x, this.y, this.size, 0, 2*Math.PI);
     ctx.fill();
 };
-    Ball.prototype.update = function(){								//边界检测
+Ball.prototype.update = function(){								//边界检测
     if((this.x + this.size)>= width){
     	this.velX = -(this.velX);
     }
@@ -62,13 +62,13 @@ Ball.prototype.draw = function(){
 Ball.prototype.collisionDetect = function(){
     for(var j = 0; j < balls.length; j++){
     	if(!(this === balls[j])){								//被检测的两个球是否是同一个
-    		var dx = this.x - balls[j].x;
-    		var dy = this.y - balls[j].y;
-    		var distance = Math.sqrt(dx * dx + dy * dy);		//两球的距离
+    	    var dx = this.x - balls[j].x;
+    	    var dy = this.y - balls[j].y;
+    	    var distance = Math.sqrt(dx * dx + dy * dy);		//两球的距离
 
-    		if(distance < this.size + balls[j].size){			//距离小于两球半径和
-    			balls[j].color = this.color = 'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) + ')';
-    		}
+    	    if(distance < this.size + balls[j].size){			//距离小于两球半径和
+    	        balls[j].color = this.color = 'rgb(' + random(0,255) + ',' + random(0,255) + ',' + random(0,255) + ')';
+            }
     	}
     }
 };
@@ -104,32 +104,32 @@ EvilCircle.prototype.checkBounds = function(){
     	this.y += this.size;
     }
 };
-    EvilCircle.prototype.setControls = function(){				//移动EvilCircle
+EvilCircle.prototype.setControls = function(){				//移动EvilCircle
     var _this = this;										//操作函数内指针
     window.onkeydown = function(e){
     	if (e.keyCode === 65) {			//a
-    		_this.x -= _this.velX;
+    	    _this.x -= _this.velX;
     	}else if (e.keyCode === 68) {	//d
-    		_this.x += _this.velX;
+    	    _this.x += _this.velX;
     	}else if (e.keyCode === 87) {	//w
-    		_this.y -= _this.velY;
+    	    _this.y -= _this.velY;
     	}else if (e.keyCode === 83) {	//s
-    		_this.y += _this.velY;
+    	    _this.y += _this.velY;
     	}
     };
 };
 EvilCircle.prototype.collisionDetect = function(){
     for (var j = 0; j < balls.length; j++){
     	if(balls[j].exists){
-    		var dx = this.x - balls[j].x;
-    		var dy = this.y - balls[j].y;
-    		var distance = Math.sqrt(dx * dx + dy * dy);
+    	    var dx = this.x - balls[j].x;
+    	    var dy = this.y - balls[j].y;
+    	    var distance = Math.sqrt(dx * dx + dy * dy);
 
-    		if(distance < this.size + balls[j].size){
-    			balls[j].exists = false;
-    			count--;
-    			para.textContent = 'Ball count:' + count;
-    		}
+    	    if(distance < this.size + balls[j].size){
+    	        balls[j].exists = false;
+    	        count--;
+    	        para.textContent = 'Ball count:' + count;
+    	    }
     	}
     }
 };
@@ -150,9 +150,9 @@ function loop(){
     }
     for(var i = 0; i < balls.length; i++){
     	if(balls[i].exists){
-    		balls[i].draw();
-    		balls[i].update();
-    		balls[i].collisionDetect();
+    	    balls[i].draw();
+    	    balls[i].update();
+    	    balls[i].collisionDetect();
     	}
     }
     evil_circle.draw();
