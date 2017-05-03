@@ -5,25 +5,25 @@
 	<title>IFE JavaScript Task 01</title>
   </head>
   <body>
-	<label>请输入上海今天空气质量：<input id="aqi-input" type="text"></label>
-	<button id="button">确认填写</button>
+    <label>请输入上海今天空气质量：<input id="aqi-input" type="text"></label>
+    <button id="button">确认填写</button>
 
-	<div>您输入的值是：<span id="aqi-display">尚未录入</span></div>
+    <div>您输入的值是：<span id="aqi-display">尚未录入</span></div>
 
-	<script type="text/javascript">
+    <script type="text/javascript">
 		
-		var input = document.getElementById("aqi-input");
-		var btn = document.getElementById('button');	
-		var display = document.getElementById('aqi-display');
-		btn.onclick = function(){
+        var input = document.getElementById("aqi-input");
+        var btn = document.getElementById('button');
+        var display = document.getElementById('aqi-display');
+        btn.onclick = function(){
             var num = input.value;
             if(isNaN(num) || (num < 0)){
                 display.innerHTML = "请输入有效数字";
             }else{
-			    display.innerHTML = num;
+                display.innerHTML = num;
             }
-		};
+        };
 
-	</script>
+    </script>
   </body>
 </html>
