@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>task_2_18_1</title>
+    <style>
+        li{
+            display:inline-block;
+            background-color:red;
+            color:#fff;
+            text-align:center;
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="input">
+    <button id="leftIn">左侧入</button>
+    <button id="rightIn">右侧入</button>
+    <button id="leftOut">左侧出</button>
+    <button id="rightOut">右侧出</button>
+
+    <ul id="print"></ul>
+
+    <script>
+        var num = document.getElementById("input");
+        var btnli = document.getElementById("leftIn");
+        var btnri = document.getElementById("rightIn");
+        var btnlo = document.getElementById("leftOut");
+        var btnro = document.getElementById("rightOut");
+        var show = document.getElementById("print");
+
+        function insert(dir){
+            if(num.value == ""){
+                alert("请输入内容");
+            }else if(isNaN(num.value)){
+                alert("请输入一个数字");
+            }else{
+                var addli = document.createElement("li");
+                addli.innerHTML = num.value;
+                if(dir === "left"){
+                    show.insertBefore(addli,show.firstChild);
+                }else if(dir === "right"){
+                    show.appendChild(addli);
+                }
+            }
+        }
+        function del(dir){
+            if(document.querySelectorAll("li").length <= 0){
+                alert("无可删除数据");
+            }else{
+                if(dir === "left"){
+                    show.removeChild(show.firstChild);
+                }else if(dir === "right"){
+                    show.removeChild(show.lastChild);
+                }
+            }
+        }
+        btnli.onclick = function(){insert("left");};
+        btnri.onclick = function(){insert("right");};
+        btnlo.onclick = function(){del("left");};
+        btnro.onclick = function(){del("right");};        
+    </script>
+</body>
+</html>
