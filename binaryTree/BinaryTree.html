@@ -79,19 +79,65 @@
 				return searchNode(root, key)
 			}
 
+			var findMinNode = function(node){
+				if (node) {
+					while(node.left) {
+						node = node.left
+					}
+					return node
+				}
+				return null
+			}
+
+			var removeNode = function(node, key) {
+				if (node === null) {
+					return null
+				}
+				if (key < node.key) {
+					node.left = removeNode(node.left, key)		// 被删节点的父节点的左孩子置为空
+					return node
+				} else if (key > node.right) {
+					node.right = removeNode(node.right, key)
+					return node
+				} else {
+					if (node.left === null && node.right === null) {
+						node = null
+						return node
+					}
+					if (node.left === null) {
+						node = node.right
+						return node
+					} else if (node.right === null) {
+						node = node.left
+						return node
+					}
+
+					var aux = findMinNode(node.right)
+					node.key = aux.key
+					node.right = removeNode(node.right, aux.key)	// delete min node
+					return node
+				}
+			}
+			this.remove = function(key) {
+				root = removeNode(root, key)
+			}
+
 		}
 
-		var nodes = [3, 1, 7, 11, 5, 14, 8, 10]
+		var nodes = [8, 1, 7, 11, 5, 14, 3, 10]
 		var binaryTree = new BinaryTree()
 		nodes.forEach(function(key) {
 			binaryTree.insert(key)
 		})
+		binaryTree.inOrderTraverse(callback)
 
 		function callback(key) {
 			console.log(key)
 		}
 
 		console.log('max node is:' + binaryTree.max())
-		console.log(binaryTree.search(2) ? 'true' : 'false')
+		console.log(binaryTree.search(2) ? ' node exist' : 'node doesn‘t exist')
+
+		binaryTree.remove(5)
 </script>
 </body>
